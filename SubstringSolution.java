@@ -23,10 +23,12 @@ class Result {
 
 	public static String findSubstring(String s, int k) {
 		long a=0;
+		long b=0;
 		String subsequence=null;
 			for (int i = 0; i+k<=s.length(); i++) {
-				if(s.substring(i, i+k).replaceAll("[aeiou]+?", "1").chars().filter(x->x=='1').count()>a) {
-					a=s.substring(i, k+i).replaceAll("[aeiou]+?", "1").chars().filter(x->x=='1').count();
+				b=s.substring(i, i+k).replaceAll("[aeiou]+?", "1").chars().filter(x->x=='1').count();
+				if(b>a) {
+					a=b;
 					subsequence=s.substring(i, k+i);
 				}
 			}
